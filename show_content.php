@@ -1,16 +1,19 @@
 <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'myfirst');
+$conn = mysqli_connect('localhost', 'root', '', 'myfirst');
 
-    $sql = "
+$sql = "
         SELECT * FROM make;
     ";
 
-    $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
-    
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $id = $_POST['id'];
+
+$title = $_GET['title'];
+$content = $_GET['content'];
+$id = $_GET['id'];
+$date = $_GET['date'];
+
+
 ?>
 
 <!doctype html>
@@ -26,7 +29,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">Home</a>
@@ -37,7 +39,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="./community.php">게시판</a>
                     </li>
                     <li class="nav-item">
@@ -57,26 +59,56 @@
             </div>
         </div>
     </nav>
-    
-    <div>
-        
-        <form action="update.php" method="POST">
-            <input type="hidden" name="title" value="<?=$title?>">
-            <input type="hidden" name="content" value="<?=$content?>">
-            <input type="hidden" name="id" value="<?=$id?>">
-            <input type="submit" class="btn btn-secondary" value="수정">
-        </form>
-        <form action="process_delete.php" method="POST">
-            <input type="hidden" name="id" value="<?=$id?>">
-            <input type="submit" class="btn btn-danger" value="삭제">
-        </form>
-        
-        <h1><?=$title?></h1>
-    </div>
-        <p><?=$content?></p>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+
+
+    <main class="container">
+        <div class="row g-5">
+            <div class="col-md-8">
+                <article class="blog-post">
+                    <h2 class="display-5 link-body-emphasis mb-1">
+                        <font style="vertical-align: inherit;"><?= $title ?></font>
+                    </h2>
+                    <p class="blog-post-meta">
+                        <font style="vertical-align: inherit;"><?= $date ?></font></a>
+                    </p>
+                    <hr>
+                    <br>
+                        <div class="btn btn-primary btn-sm">
+                            <form action="process_delete.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $id ?>">
+                                <input type="submit" value="삭제"
+                                    style="background-color:transparent; border:0px transparent solid;">
+                            </form>
+                        </div>
+                        <div class="btn btn-secondary btn-sm">
+                            <form action="update.php" method="POST">
+                                <input type="hidden" name="title" value="<?= $title ?>">
+                                <input type="hidden" name="content" value="<?= $content ?>">
+                                <input type="hidden" name="id" value="<?= $id ?>">
+                                <input type="submit" value="수정"
+                                    style="background-color:transparent; border:0px transparent solid;">
+                            </form>
+                        </div>
+                        <br>
+                        <br>
+                    <p><font style="vertical-align: inherit;"><?= $content ?></font>
+                    </p>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
 

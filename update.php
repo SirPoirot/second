@@ -6,6 +6,7 @@
     $content = $_POST['content'];
     $id = $_POST['id'];
 
+    
     $sql = "
        UPDATE make
        SET 
