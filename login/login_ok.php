@@ -44,6 +44,13 @@ $row = mysqli_fetch_array($result);
             </script>
         ";
             }
+            else{
+                echo "<script>
+                    alert('비밀번호가 틀립니다.');
+                    self.location.href='index.php';
+                    </script>
+                ";
+            }
         }
         else {
             echo "<script>
