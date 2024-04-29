@@ -24,17 +24,16 @@ if ($pw == '') {
     exit;
 }
 
-$sql_id = "
-        SELECT user_id FROM members;
-    ";
-$sql_pw = "
-        SELECT password FROM members;
-    ";
-$result_id = mysqli_query($conn, $sql_id);
-$result_pw = mysqli_query($conn, $sql_pw);
-while ($row_id = mysqli_fetch_array($result_id)) {
-    while ($row_pw = mysqli_fetch_array($result_pw)) {
-        if ($id == $row_id['user_id'] && $pw === $row_pw['password']) {
+
+$sql = "
+    SELECT user_id,password FROM members WHERE user_id = '".$id."'
+";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+
+
+        if ($row['user_id']) {
+            if($row['password'] == $pw){
             session_start();
 
             $_SESSION["ss_id"] = $id;
@@ -44,6 +43,7 @@ while ($row_id = mysqli_fetch_array($result_id)) {
             self.location.href='member.php'; //회원전용페이지로 이동
             </script>
         ";
+            }
         }
         else {
             echo "<script>
@@ -53,6 +53,5 @@ while ($row_id = mysqli_fetch_array($result_id)) {
                 ";
         }
         
-    }
-}
+
 
