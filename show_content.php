@@ -43,7 +43,7 @@ $date = $_GET['date'];
                         <a class="nav-link" href="./community.php">게시판</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="login/">로그인</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
@@ -74,25 +74,26 @@ $date = $_GET['date'];
                     </p>
                     <hr>
                     <br>
-                        <div class="btn btn-primary btn-sm">
-                            <form action="process_delete.php" method="POST">
-                                <input type="hidden" name="id" value="<?= $id ?>">
-                                <input type="submit" value="삭제"
-                                    style="background-color:transparent; border:0px transparent solid;">
-                            </form>
-                        </div>
-                        <div class="btn btn-secondary btn-sm">
-                            <form action="update.php" method="POST">
-                                <input type="hidden" name="title" value="<?= $title ?>">
-                                <input type="hidden" name="content" value="<?= $content ?>">
-                                <input type="hidden" name="id" value="<?= $id ?>">
-                                <input type="submit" value="수정"
-                                    style="background-color:transparent; border:0px transparent solid;">
-                            </form>
-                        </div>
-                        <br>
-                        <br>
-                    <p><font style="vertical-align: inherit;"><?= $content ?></font>
+                    <div class="btn btn-primary btn-sm">
+                        <form action="process_delete.php" method="POST">
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <input type="submit" value="삭제"
+                                style="background-color:transparent; border:0px transparent solid;">
+                        </form>
+                    </div>
+                    <div class="btn btn-secondary btn-sm">
+                        <form action="update.php" method="POST">
+                            <input type="hidden" name="title" value="<?= $title ?>">
+                            <input type="hidden" name="content" value="<?= $content ?>">
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <input type="submit" value="수정"
+                                style="background-color:transparent; border:0px transparent solid;">
+                        </form>
+                    </div>
+                    <br>
+                    <br>
+                    <p>
+                        <font style="vertical-align: inherit;"><?= $content ?></font>
                     </p>
                 </article>
             </div>
